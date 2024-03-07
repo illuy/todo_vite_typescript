@@ -3,9 +3,12 @@ import { Todo } from "../../types/todoType";
 
 interface TodoItemProps{
     todo: Todo;
+    deleteTodo:(id:string) => void;
 }
-const TodoItem = ({todo}:TodoItemProps) => {
-    const {title, content,deadline,isDone} = todo;
+const TodoItem = ({todo, deleteTodo}:TodoItemProps) => {
+    const {title, content,deadline,isDone,id} = todo;
+
+    const onClickDelete = () => deleteTodo(id);
   return (
     <TodoCardItem $isDone={isDone}>
         <article>
@@ -16,7 +19,7 @@ const TodoItem = ({todo}:TodoItemProps) => {
             </div>
             <div>
                 <button>완료</button>
-                <button>삭제</button>
+                <button onClick={onClickDelete}>삭제</button>
             </div>
         </article>
     </TodoCardItem>
