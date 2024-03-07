@@ -1,7 +1,11 @@
 import React from 'react'
 import { Todo } from '../../types/todoType';
 
-export const TodoForm = () => {
+interface TodoFormProps{
+    addTodo:(todo:Todo) => void
+}
+
+export const TodoForm = ({addTodo}:TodoFormProps) => {
     const onSubmit = (e: React.FormEvent<HTMLFormElement>) =>{
         e.preventDefault();
 
@@ -16,7 +20,7 @@ export const TodoForm = () => {
             isDone :false,
             deadline : new Date().toISOString(),
         }
-
+        addTodo(nextTodo);
     }
 
   return (
