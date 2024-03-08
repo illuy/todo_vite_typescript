@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Todo } from '../../types/todoType';
 
 interface TodoFormProps{
@@ -6,6 +6,9 @@ interface TodoFormProps{
 }
 
 export const TodoForm = ({addTodo}:TodoFormProps) => {
+    const [title, setTitle] = useState('');
+    const [content, setContent] = useState('');
+
     const onSubmit = (e: React.FormEvent<HTMLFormElement>) =>{
         e.preventDefault();
 
@@ -21,6 +24,10 @@ export const TodoForm = ({addTodo}:TodoFormProps) => {
             deadline : new Date().toISOString(),
         }
         addTodo(nextTodo);
+
+            // 폼 입력값 초기화
+        setTitle('');
+        setContent('');
     }
 
   return (
