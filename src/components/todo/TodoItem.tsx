@@ -4,11 +4,13 @@ import { Todo } from "../../types/todoType";
 interface TodoItemProps{
     todo: Todo;
     deleteTodo:(id:string) => void;
+    toggleTodoDone:(id:string) => void;
 }
-const TodoItem = ({todo, deleteTodo}:TodoItemProps) => {
+const TodoItem = ({todo, deleteTodo,toggleTodoDone}:TodoItemProps) => {
     const {title, content,deadline,isDone,id} = todo;
 
     const onClickDelete = () => deleteTodo(id);
+    const onClickToggleDone = () => toggleTodoDone(id);
   return (
     <TodoCardItem $isDone={isDone}>
         <article>
@@ -18,7 +20,7 @@ const TodoItem = ({todo, deleteTodo}:TodoItemProps) => {
                 <time>{deadline}</time>
             </div>
             <div>
-                <button>완료</button>
+                <button onClick={onClickToggleDone}>{isDone ? '취소' : '완료'}</button>
                 <button onClick={onClickDelete}>삭제</button>
             </div>
         </article>

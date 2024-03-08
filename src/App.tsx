@@ -4,13 +4,13 @@ import useTodos from './hooks/useTodos'
 import { Todo } from './types/todoType';
 
 const App = () => {
-  const {addTodo,todos,deleteTodo} = useTodos();
+  const {addTodo,deleteTodo,toggleTodoDone,inProgressTodos,doneTodos} = useTodos();
 
   return (
     <>
       <TodoForm addTodo={addTodo}/>
-      <TodoList todoTitle={'In Progress'} todos={todos} deleteTodo={deleteTodo}/>
-      <TodoList todoTitle={'Done'} todos={todos} deleteTodo={deleteTodo}/>
+      <TodoList todoTitle={'In Progress'} todos={inProgressTodos} deleteTodo={deleteTodo} toggleTodoDone={toggleTodoDone}/>
+      <TodoList todoTitle={'Done'} todos={doneTodos} deleteTodo={deleteTodo} toggleTodoDone={toggleTodoDone}/>
         
     </>
   )
