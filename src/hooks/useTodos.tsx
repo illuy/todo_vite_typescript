@@ -1,11 +1,11 @@
 import { useState } from "react"
-import { InProgressTodo, Todo } from "../types/todoType";
+import { DoneTodo, InProgressTodo, Todo } from "../types/todoType";
 
 const useTodos = () => {
     const [todos, setTodos] = useState<Todo[]>([]);
 
-    const inProgressTodos = todos.filter((todo)=> !todo.isDone);
-    const doneTodos = todos.filter((todo)=> todo.isDone);
+    const inProgressTodos = todos.filter((todo)=> !todo.isDone) as InProgressTodo[];
+    const doneTodos = todos.filter((todo)=> todo.isDone) as DoneTodo[];
 
     const addTodo = (todo:Todo)=>{
         setTodos((prevTodos)=>[todo,...prevTodos]);
